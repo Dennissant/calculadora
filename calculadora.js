@@ -1,23 +1,29 @@
-var um = parseFloat(prompt("D|igiti o primeiro número: "));
-var dois = parseFloat(prompt("D|igiti o segundo número: "));
-var operacao = prompt("Digite a operação desejada: ")
+// Função para adicionar símbolo no display
+function appendSymbol(symbol) {
+    var display = document.getElementById('display');
+    display.value += symbol;
+}
 
-if (operacao == "+") {
-    var resultado = um + dois;
+// Função para limpar o display
+function clearDisplay() {
+    document.getElementById('display').value = '';
 }
-else if (operacao == "-"){
-    var resultado = um - dois;
-}
-else if (operacao == "*" || operacao == "x" || operacao == "X"){
-    var resultado = um * dois;
-}
-else if (operacao == "/"){
-    var resultado = um / dois;
 
-}else {
-    var resultado = "operação invalida";
+// Função para remover o último caractere do display
+function backspace() {
+    var display = document.getElementById('display');
+    display.value = display.value.slice(0, -1);
 }
-alert("O resultado é "+ resultado);
+
+// Função para realizar o cálculo
+function calculate() {
+    var display = document.getElementById('display');
+    try {
+        display.value = eval(display.value);
+    } catch (e) {
+        display.value = 'Erro';
+    }
+}
 
 
 
